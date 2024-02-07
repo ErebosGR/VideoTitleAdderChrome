@@ -2,7 +2,7 @@ chrome.extension.onMessage.addListener(
   function(request, sender, sendResponse) {
     if (request.name == "fetchPage") {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', "https://www.googleapis.com/youtube/v3/videos?id=" + request.videoid + "&part=snippet,contentDetails,statistics&key=AIzaSyBUd0hFaYWyHwbNYKobR3af9utLz4zn6j4", true);
+        xhr.open('GET', "https://www.googleapis.com/youtube/v3/videos?id=" + request.videoid + "&part=snippet,contentDetails,statistics&key=", true);
         xhr.onreadystatechange = function (evt) {
             if (xhr.readyState == 4) {
                 if (xhr.status == 200) {
@@ -17,16 +17,16 @@ chrome.extension.onMessage.addListener(
         return true;
     } else if (request.name == "getOptions") {
         var defaults = {
-            "textlinks":            1,
+            "textlinks":            0,
             "imglinks":             0,
-            "embed":                1,
+            "embed":                0,
             "embedleft":            0,
             "showEmbeddedPlayer":   0,
-            "replacename":          1,
+            "replacename":          0,
             "tooltip":              1,
             "timestamp":            0,
             "timestamptooltip":     1,
-            "restrictedicon":       1,
+            "restrictedicon":       0,
         };
 
         var resp = {};
